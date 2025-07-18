@@ -33,7 +33,14 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow AlcoFinder to use your location."
+        }
       ]
+      
     ],
     "experiments": {
       "typedRoutes": true
