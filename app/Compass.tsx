@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View } from "react-native";
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
 export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
+  // Reanimated shared value for rotation
+  const animatedRotation = useSharedValue(rotation);
+
+  useEffect(() => {
+    animatedRotation.value = withSpring(rotation, {
+      damping: 15,
+      stiffness: 120,
+      mass: 0.8,
+      overshootClamping: false,
+      restDisplacementThreshold: 0.1,
+      restSpeedThreshold: 0.1,
+    });
+  }, [rotation]);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ rotate: `${animatedRotation.value}deg` }],
+  }));
+
   return (
     <View
       style={{
@@ -11,7 +30,6 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
         justifyContent: "center",
       }}
     >
-
       <View
         style={{
           zIndex: 1,
@@ -61,14 +79,14 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
           />
         </View>
 
-        <View
-          style={{
+        {/* Animated pointer */}
+        <Animated.View
+          style={[{
             width: length,
             height: length,
             alignItems: "center",
             justifyContent: "center",
-            transform: [{ rotate: `${rotation}deg` }],
-          }}
+          }, animatedStyle]}
         >
           {/* Upward pointing arrow */}
           {/* Left half of red arrow (darker) */}
@@ -139,7 +157,7 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
               zIndex: 2,
             }}
           />
-        </View>
+        </Animated.View>
       </View>
       <View
         style={{
