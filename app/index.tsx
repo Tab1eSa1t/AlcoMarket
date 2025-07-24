@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import Arrow from "./Compass";
 import { useHeading, useLatLong } from "./location";
 import LocationPicker, { LocationType } from "./LocationPicker";
@@ -23,6 +23,20 @@ function calculateBearing(lat1: number, lon1: number, lat2: number, lon2: number
   return (toDeg(θ) + 360) % 360;
 }
 
+// Calculate distance in meters between two lat/lon points using Haversine formula
+function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
+  const R = 6371000; // Earth radius in meters
+  const φ1 = toRad(lat1);
+  const φ2 = toRad(lat2);
+  const Δφ = toRad(lat2 - lat1);
+  const Δλ = toRad(lon2 - lon1);
+  const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+            Math.cos(φ1) * Math.cos(φ2) *
+            Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
 export default function App() {
   // No default target, null means no place chosen
   const [target, setTarget] = useState<LocationType | null>(null);
@@ -31,6 +45,7 @@ export default function App() {
 
   let bearing = null;
   let arrowRotation = 0;
+    let distance = null;
   if (
     target &&
     typeof latitude === "number" &&
@@ -40,6 +55,7 @@ export default function App() {
     bearing = calculateBearing(latitude, longitude, target.latitude, target.longitude);
     // The arrow should rotate by the difference between bearing and heading
     arrowRotation = bearing - heading;
+      distance = calculateDistance(latitude, longitude, target.latitude, target.longitude);
   } else if (typeof heading === "number") {
     // No target: arrow points straight ahead (0 deg relative to device)
     arrowRotation = 0;
@@ -48,8 +64,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <LocationPicker selected={target} onSelect={setTarget} />
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', alignSelf: 'stretch' }}>
+      <View style={styles.arrowContainer}>
         <Arrow rotation={arrowRotation} />
+        <Text style={styles.distanceText}>
+          {distance !== null ? distance.toFixed(2) : "420"}
+        </Text>
       </View>
     </View>
   );

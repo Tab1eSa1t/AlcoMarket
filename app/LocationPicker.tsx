@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 
 const LOCATIONS = [
   { label: "Resedinta Vlas", latitude: 46.94631788254242, longitude: 28.790050541185515 },
@@ -14,17 +14,17 @@ export default function LocationPicker({ selected, onSelect }: {
   onSelect: (loc: LocationType) => void;
 }) {
   return (
-    <View style={styles.container}>
+  <View style={styles.locationPickerContainer}>
       <FlatList
         horizontal
         data={LOCATIONS}
         keyExtractor={item => item.label}
         renderItem={({ item }) => (
           <TouchableOpacity
-            style={[styles.button, selected && selected.label === item.label && styles.selected]}
+            style={[styles.locationPickerButton, selected && selected.label === item.label && styles.locationPickerSelected]}
             onPress={() => onSelect(item)}
           >
-            <Text style={styles.text}>{item.label}</Text>
+            <Text style={styles.locationPickerText}>{item.label}</Text>
           </TouchableOpacity>
         )}
         showsHorizontalScrollIndicator={false}
@@ -33,26 +33,5 @@ export default function LocationPicker({ selected, onSelect }: {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    marginBottom: 16,
-    marginTop: 16,
-    alignSelf: "stretch",
-    justifyContent: "center",
-  },
-  button: {
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 20,
-    backgroundColor: "#eee",
-    marginHorizontal: 4,
-  },
-  selected: {
-    backgroundColor: "#007AFF",
-  },
-  text: {
-    color: "#333",
-    fontWeight: "bold",
-  },
-});
+import styles from "./styles";
+
