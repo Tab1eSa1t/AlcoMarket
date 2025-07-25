@@ -56,8 +56,8 @@ export default function App() {
   ) {
     bearing = calculateBearing(latitude, longitude, target.latitude, target.longitude);
     // The arrow should rotate by the difference between bearing and heading
-    arrowRotation = bearing - heading;
-      distance = calculateDistance(latitude, longitude, target.latitude, target.longitude);
+  arrowRotation = ((bearing - heading + 540) % 360) - 180;
+  distance = calculateDistance(latitude, longitude, target.latitude, target.longitude);
   } else if (typeof heading === "number") {
     // No target: arrow points straight ahead (0 deg relative to device)
     arrowRotation = 0;

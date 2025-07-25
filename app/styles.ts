@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   // Main app container
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ECF0F1',
     alignItems: 'center',
     justifyContent: 'flex-start',
     padding: 16,
@@ -48,13 +48,12 @@ const styles = StyleSheet.create({
       marginTop: 30,
       fontSize: 36,
       fontWeight: 'bold',
-      color: '#25292cff',
+      color: '#515555ff',
       textShadowColor: 'rgba(0, 0, 0, 0.25)',
       textShadowOffset: { width: 2, height: 2 },
       textShadowRadius: 4,
       letterSpacing: 1.2,
       paddingHorizontal: 12,
-      backgroundColor: 'rgba(255,255,255,0.7)',
       borderRadius: 12,
       overflow: 'hidden',
     },

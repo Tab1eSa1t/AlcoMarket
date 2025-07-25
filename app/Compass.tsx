@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { View } from "react-native";
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
-export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
+export default function Arrow({ rotation = 0, length = 180, width = 35 }) {
   // Reanimated shared value for rotation
   const animatedRotation = useSharedValue(rotation);
 
@@ -56,8 +56,8 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
         <View
           style={{
             position: 'absolute',
-            width: width-10,
-            height: width-10,
+            width: width-17,
+            height: width-17,
             borderRadius: 20,
             overflow: 'hidden',
             zIndex: 10,
@@ -65,15 +65,15 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
         >
           <View
             style={{
-              width: width-10,
-              height: (width-10)/2,
+              width: width-17,
+              height: (width-17)/2,
               backgroundColor: '#C1C2C7',
             }}
           />
           <View
             style={{
-              width: width-10,
-              height: (width-10)/2,
+              width: width-17,
+              height: (width-17)/2,
               backgroundColor: '#7E8C8D',
             }}
           />
@@ -93,7 +93,7 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
           <View
             style={{
               position: "absolute",
-              top: length/30,
+              top: length/22,
               left: length / 2 - width / 2, // center left half
               width: 0,
               height: 0,
@@ -110,7 +110,7 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
           <View
             style={{
               position: "absolute",
-              top: length/30,
+              top: length/22,
               left: length / 2, // center right half
               width: 0,
               height: 0,
@@ -127,7 +127,7 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
           <View
             style={{
               position: "absolute",
-              bottom: length/30,
+              bottom: length / 22,
               left: length / 2 - width / 2, // center left half
               width: 0,
               height: 0,
@@ -144,7 +144,7 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
           <View
             style={{
               position: "absolute",
-              bottom: length/30,
+              bottom: length/22,
               left: length / 2, // center right half
               width: 0,
               height: 0,
