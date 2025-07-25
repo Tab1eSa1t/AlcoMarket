@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Arrow from "./Compass";
 import { useHeading, useLatLong } from "./location";
 import LocationPicker, { LocationType } from "./LocationPicker";
 import styles from "./styles";
+
 // Helper to convert degrees to radians
 function toRad(deg: number) {
   return (deg * Math.PI) / 180;
@@ -62,7 +64,7 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <LocationPicker selected={target} onSelect={setTarget} />
       <View style={styles.arrowContainer}>
         <Arrow rotation={arrowRotation} />
@@ -70,6 +72,6 @@ export default function App() {
           {distance !== null ? distance.toFixed(2) : "420"}
         </Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

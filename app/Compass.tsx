@@ -36,7 +36,7 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
           width: length + 20,
           height: length + 20,
           borderRadius: 100,
-          backgroundColor: "#969696ff",
+          backgroundColor: "#BEC3C7",
           alignItems: "center",
           justifyContent: "center",
         }}>
@@ -46,7 +46,7 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
             width: length,
             height: length,
             borderRadius: 100,
-            backgroundColor: "#3994d9ff",
+            backgroundColor: "#3497DA",
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -67,14 +67,14 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
             style={{
               width: width-10,
               height: (width-10)/2,
-              backgroundColor: '#969696ff',
+              backgroundColor: '#C1C2C7',
             }}
           />
           <View
             style={{
               width: width-10,
               height: (width-10)/2,
-              backgroundColor: '#616161ff',
+              backgroundColor: '#7E8C8D',
             }}
           />
         </View>
@@ -102,7 +102,7 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
               borderBottomWidth: length / 2.2,
               borderLeftColor: "transparent",
               borderRightColor: "transparent",
-              borderBottomColor: "#b70000ff", // darker red
+              borderBottomColor: "#C1392B", // darker red
               zIndex: 2,
             }}
           />
@@ -119,7 +119,7 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
               borderBottomWidth: length / 2.2,
               borderLeftColor: "transparent",
               borderRightColor: "transparent",
-              borderBottomColor: "red",
+              borderBottomColor: "#EB4B3F",
               zIndex: 2,
             }}
           />
@@ -136,7 +136,7 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
               borderTopWidth: length / 2.2,
               borderLeftColor: "transparent",
               borderRightColor: "transparent",
-              borderTopColor: "#b0b0b0", // darker white/gray
+              borderTopColor: "#BDC2C6", // darker white/gray
               zIndex: 2,
             }}
           />
@@ -153,7 +153,7 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
               borderTopWidth: length / 2.2,
               borderLeftColor: "transparent",
               borderRightColor: "transparent",
-              borderTopColor: "white",
+              borderTopColor: "#ECF0F1",
               zIndex: 2,
             }}
           />
@@ -166,7 +166,7 @@ export default function Arrow({ rotation = 0, length = 180, width = 30 }) {
           width: length + 20,
           height: length + 20,
           borderRadius: 100,
-          backgroundColor: "#616161ff",
+          backgroundColor: "#96A4A5",
           alignItems: "center",
           justifyContent: "center",
         }}
